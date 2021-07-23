@@ -15,8 +15,24 @@ name = "zero2prod"
 [dependencies]
 actix-web = "=4.0.0-beta.8"
 actix-http = "=3.0.0-beta.8"
+serde = { version = "1", features = ["derive"]}
+config = { version = "0.10.1", default-features = false, features = ["yaml"] }
+uuid = { version = "0.8.1", features = ["v4"]}
+chrono = "0.4.15"
+
+[dependencies.sqlx]
+version = "0.5.5"
+default-features = false
+features = [
+    "runtime-actix-rustls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "migrate",
+]
 
 [dev-dependencies]
 actix-rt = "=2"
-reqwest = "=0.11"
-tokio = "=1"
+reqwest = "0.11"
+tokio = "1"
