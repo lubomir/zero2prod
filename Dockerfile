@@ -14,10 +14,9 @@ COPY --from=cacher /app/target target
 COPY --from=cacher /usr/local/cargo /usr/local/cargo
 COPY . .
 ENV SQLX_OFFLINE true
-RUN cargo build --release
+RUN cargo build --release --bin zero2prod
 
 FROM debian:buster-slim as runtime
-
 WORKDIR /app
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends openssl \
